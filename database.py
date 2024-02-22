@@ -51,17 +51,17 @@ df['Total'] = pd.to_numeric(df['Total'], errors='coerce')
 st.subheader("Datos desde MongoDB")
 st.table(df)
 
-# Formulario
+# Formulario para agregar nuevos datos
 st.subheader("Agregar nuevos datos")
 
-# Recolección de información
+# Recolección de información del usuario
 new_data = {}
 new_data['Bebida'] = st.text_input("Bebida")
 new_data['Comida'] = st.text_input("Comida")
 new_data['Postre'] = st.text_input("Postre")
 new_data['Total'] = st.number_input("Total")
 
-# Botón
+# Botón para insertar los nuevos datos
 if st.button("Agregar"):
     insert_data(new_data)
 
@@ -69,5 +69,5 @@ if st.button("Agregar"):
 
 dfInventory = pd.read_csv("datos/Inventory.csv")
 st.dataframe(dfInventory.head())
-#comit prueba 2
+
 inventoryCollection = dfInventory.to_dict()
