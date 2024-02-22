@@ -72,3 +72,5 @@ dfInventory = pd.read_csv("datos/Inventory.csv")
 st.dataframe(dfInventory.head())
 
 inventoryCollection = dfInventory.to_dict()
+
+#se instalo pip install streamlit --upgrade
