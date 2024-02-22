@@ -13,7 +13,7 @@ def connection():
                        "@prediccion2024.xcpbxzg.mongodb.net/", tlsCAFile=certifi.where())
 
 # Función para obtener los datos de la base de datos
-
+@st.experimental_memo(ttl=60)
 def get_data():
     db = connection().get_database("Prediccion")
     collection = db.get_collection("ejemplo2")
