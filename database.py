@@ -19,6 +19,7 @@ def get_data():
     collection = db.get_collection("ejemplo2")
     items = collection.find()
     return list(items)
+#
 
 # Función para insertar datos en la base de datos
 def insert_data(data):
