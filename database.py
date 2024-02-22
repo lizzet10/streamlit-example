@@ -7,13 +7,13 @@ import certifi
 st.title("Prueba de conexión a MongoDB")
 
 # Función para establecer la conexión a MongoDB
-@st.experimental_singleton(suppress_st_warning=True)
+
 def connection():
     return MongoClient("mongodb+srv://" + st.secrets["DB_USERNAME"] + ":" + st.secrets["DB_PASSWORD"] +
                        "@prediccion2024.xcpbxzg.mongodb.net/", tlsCAFile=certifi.where())
 
 # Función para obtener los datos de la base de datos
-@st.experimental_memo(ttl=60)
+
 def get_data():
     db = connection().get_database("Prediccion")
     collection = db.get_collection("ejemplo2")
