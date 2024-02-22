@@ -7,13 +7,13 @@ import certifi
 st.title("Prueba de conexión a MongoDB")
 
 # Función para establecer la conexión a MongoDB
-@st.experimental_singleton(suppress_st_warning=True)
+
 def connection():
     return MongoClient("mongodb+srv://" + st.secrets["DB_USERNAME"] + ":" + st.secrets["DB_PASSWORD"] +
                        "@prediccion2024.xcpbxzg.mongodb.net/", tlsCAFile=certifi.where())
 
 # Función para obtener los datos de la base de datos
-@st.experimental_memo(ttl=60)
+
 def get_data():
     db = connection().get_database("Prediccion")
     collection = db.get_collection("ejemplo2")
@@ -51,17 +51,17 @@ df['Total'] = pd.to_numeric(df['Total'], errors='coerce')
 st.subheader("Datos desde MongoDB")
 st.table(df)
 
-# Formulario para agregar nuevos datos
+# Formulario
 st.subheader("Agregar nuevos datos")
 
-# Recolección de información del usuario
+# Recolección de información
 new_data = {}
 new_data['Bebida'] = st.text_input("Bebida")
 new_data['Comida'] = st.text_input("Comida")
 new_data['Postre'] = st.text_input("Postre")
 new_data['Total'] = st.number_input("Total")
 
-# Botón para insertar los nuevos datos
+# Botón
 if st.button("Agregar"):
     insert_data(new_data)
 
@@ -69,5 +69,5 @@ if st.button("Agregar"):
 
 dfInventory = pd.read_csv("datos/Inventory.csv")
 st.dataframe(dfInventory.head())
-
+#comit prueba 2
 inventoryCollection = dfInventory.to_dict()
